@@ -17,6 +17,7 @@ services:
   jellyfin:
     image: jellyfin/jellyfin
     networks:
+      - jellyfin
       - selfhost
 
 volumes:
@@ -26,5 +27,6 @@ volumes:
     external: true
 
 networks:
+  jellyfin:
   selfhost:
     external: true
