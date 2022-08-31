@@ -16,6 +16,7 @@ services:
 
   jellyfin:
     image: jellyfin/jellyfin
+    restart: always
     networks:
       - default
       - selfhost
