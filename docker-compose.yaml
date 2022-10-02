@@ -1,13 +1,13 @@
 ---
-version: "3.5"
+version: "3.7"
 
 services:
   install_site:
-    build: ./install_site
+    build: install_site/
     ports:
-      - 80:80
+      - "80:80"
     environment:
-      - DOMAIN=$DOMAIN
+      - BASE_URL=$BASE_URL
       - EMAIL=$EMAIL
     volumes:
       - ./nginx.conf:/web/jellyfin.conf
@@ -17,6 +17,11 @@ services:
   jellyfin:
     image: jellyfin/jellyfin
     restart: always
+    user: "$PUID:$PGID"
+    volumes:
+      - /media/:/media/
+    env_file:
+      - .env
     networks:
       - default
       - selfhost
