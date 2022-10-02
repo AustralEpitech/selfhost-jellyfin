@@ -19,6 +19,7 @@ services:
     restart: always
     user: "$PUID:$PGID"
     volumes:
+      - config:/config/
       - /media/:/media/
     env_file:
       - .env
@@ -27,6 +28,7 @@ services:
       - selfhost
 
 volumes:
+  config:
   sites-availables:
     external: true
   certs:
