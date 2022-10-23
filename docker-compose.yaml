@@ -11,8 +11,8 @@ services:
       - EMAIL=$EMAIL
     volumes:
       - ./nginx.conf:/web/jellyfin.conf
-      - sites-availables:/sites-availables
-      - certs:/etc/letsencrypt
+      - sites-availables:/sites-availables/
+      - certs:/etc/letsencrypt/
 
   jellyfin:
     image: jellyfin/jellyfin
@@ -20,7 +20,7 @@ services:
     user: "$PUID:$PGID"
     volumes:
       - config:/config/
-      - /media/:/media/
+      - $MEDIA_PATH:/media/
     env_file:
       - .env
     networks:
