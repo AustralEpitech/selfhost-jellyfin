@@ -16,7 +16,7 @@ services:
 
   jellyfin:
     image: jellyfin/jellyfin
-    restart: unless_stopped
+    restart: unless-stopped
     user: "$PUID:$PGID"
     volumes:
       - config:/config/
